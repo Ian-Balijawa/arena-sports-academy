@@ -10,8 +10,8 @@ interface CloudinaryConfig {
 }
 
 const config: CloudinaryConfig = {
-    cloudName: import.meta.env.VITE_CLOUDINARY_CLOUD_NAME || '',
-    uploadPreset: import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET || '',
+    cloudName: "duqw0clpz",
+    uploadPreset: "arena_upload_preset"
 }
 
 export async function uploadToCloudinary(
