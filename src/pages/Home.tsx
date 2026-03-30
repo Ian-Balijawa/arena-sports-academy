@@ -554,7 +554,7 @@ const contactInfo = [
 	},
 	{
 		title: "Email",
-		value: "info@arenasportsacademy.com",
+		value: "info@arenasportsacademyug.org",
 		icon: <Mail className="h-5 w-5 text-primary-600" />,
 	},
 	{
