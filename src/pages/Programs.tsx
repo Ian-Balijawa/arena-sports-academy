@@ -54,8 +54,8 @@ const ProgramsPage = () => {
 					>
 						<h1 className="text-5xl font-bold mb-6">Our Programs</h1>
 						<p className="text-xl text-white/90">
-							Comprehensive programs focused on developing complete athletes while
-							fostering personal growth
+							Comprehensive programs combining sports excellence with charitable initiatives to develop
+							complete individuals and transform communities
 						</p>
 					</motion.div>
 				</div>
@@ -103,6 +103,57 @@ const ProgramsPage = () => {
 													className="flex items-center gap-2"
 												>
 													<div className="h-1.5 w-1.5 rounded-full bg-primary-500" />
+													{feature}
+												</li>
+											))}
+										</ul>
+									</CardContent>
+								</Card>
+							</motion.div>
+						))}
+					</div>
+				</div>
+			</section>
+
+			{/* Charity Programs */}
+			<section className="py-16 bg-gradient-to-b from-blue-50 to-purple-50">
+				<div className="container">
+					<motion.div
+						initial={{ opacity: 0, y: 20 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						viewport={{ once: true }}
+						transition={{ duration: 0.6 }}
+						className="text-center mb-12"
+					>
+						<h2 className="text-3xl font-bold">Charity Programs</h2>
+						<p className="mt-4 text-lg text-muted-foreground">
+							Our charitable initiatives creating lasting community impact beyond sports
+						</p>
+					</motion.div>
+
+					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+						{charityPrograms.map((program, index) => (
+							<motion.div
+								key={program.title}
+								initial={{ opacity: 0, y: 40 }}
+								whileInView={{ opacity: 1, y: 0 }}
+								viewport={{ once: true }}
+								transition={{
+									duration: 0.5,
+									delay: index * 0.15,
+									ease: "easeOut",
+								}}
+							>
+								<Card className="h-full hover:shadow-lg transition-all group">
+									<div className="h-48 bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center">
+										{program.icon}
+									</div>
+									<CardContent className="p-6">
+										<h3 className="text-xl font-bold mb-4">{program.title}</h3>
+										<ul className="space-y-2 text-muted-foreground">
+											{program.features.map((feature) => (
+												<li key={feature} className="flex items-center gap-2">
+													<div className="h-1.5 w-1.5 rounded-full bg-blue-500" />
 													{feature}
 												</li>
 											))}
@@ -422,6 +473,49 @@ const additionalServices = [
 		title: "School Programs",
 		description: "Free football training for infants through school administration",
 		icon: <Target className="h-6 w-6 text-primary-600" />,
+	},
+];
+
+const charityPrograms = [
+	{
+		title: "Climate Action",
+		icon: <Leaf className="h-12 w-12 text-white" />,
+		features: [
+			"Tree planting campaigns",
+			"Environmental education",
+			"Waste management programs",
+			"Sustainable community practices",
+		],
+	},
+	{
+		title: "Education Support",
+		icon: <Laptop className="h-12 w-12 text-white" />,
+		features: [
+			"Scholarship programs",
+			"After-school tutoring",
+			"Digital literacy training",
+			"Life skills development",
+		],
+	},
+	{
+		title: "Cultural Heritage",
+		icon: <Palette className="h-12 w-12 text-white" />,
+		features: [
+			"Traditional dance classes",
+			"Language preservation",
+			"Cultural events organization",
+			"Heritage documentation",
+		],
+	},
+	{
+		title: "Community Impact",
+		icon: <Target className="h-12 w-12 text-white" />,
+		features: [
+			"Youth empowerment programs",
+			"Health and wellness initiatives",
+			"Community development projects",
+			"Volunteer coordination",
+		],
 	},
 ];
 

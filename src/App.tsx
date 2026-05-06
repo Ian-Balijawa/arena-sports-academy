@@ -35,6 +35,10 @@ import { Donations } from "@/pages/Donations";
 import { RegistrationSuccess } from "@/pages/RegistrationSuccess";
 import { WhatsAppChat } from "@/components/whatsapp-chat";
 import { useEffect } from "react";
+import { ClimateAction } from "@/pages/ClimateAction";
+import { Education } from "@/pages/Education";
+import { CulturalHeritage } from "@/pages/CulturalHeritage";
+import { OurImpact } from "@/pages/OurImpact";
 
 const router = createBrowserRouter([
 	{
@@ -64,6 +68,10 @@ const router = createBrowserRouter([
 				path: "registration-success",
 				element: <RegistrationSuccess />,
 			},
+			{ path: "climate-action", element: <ClimateAction /> },
+			{ path: "education", element: <Education /> },
+			{ path: "cultural-heritage", element: <CulturalHeritage /> },
+			{ path: "our-impact", element: <OurImpact /> },
 		],
 	},
 	{
@@ -97,7 +105,7 @@ export default function App() {
 				pageLanguage: "en",
 				autoDisplay: false,
 				includedLanguages:
-					"en,es,fr,de,lg,it,pt,ru,zh,ja,ko,ar,hi,bn,id,ms,th,vi,tr,nl,pl,uk,cs,ro,hu,el,sv,da,fi,no,he,fa,ur,ta,te,kn,ml,gu,pa,mr,si,ne,my,km,lo,fil,hmn,ceb,jv,su,tl,haw,sw",
+					"en,es,fr,de,lg,it,pt,ru,zh,ja,ko,ar,hi,bn,id,ms,th,ne,my,km,lo,fil,haw,sw",
 			},
 			"google_translate_element"
 		);

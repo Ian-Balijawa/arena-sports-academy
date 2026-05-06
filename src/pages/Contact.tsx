@@ -1,13 +1,14 @@
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
-import { MapPin, Phone, Mail, Building2, Users, Clock } from "lucide-react";
-import { useState } from "react";
+import { MapPin, Phone, Mail, Building2, Users, Clock, Leaf, BookOpen, Building, Heart } from "lucide-react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ContactFormData } from "@/types";
 import { api } from "@/services/api";
 import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
+import { useSearchParams } from "react-router-dom";
 
 const departments = [
 	{
@@ -23,9 +24,34 @@ const departments = [
 		icon: Users,
 		contact: "Rev Phillips",
 	},
+	{
+		name: "Climate Action",
+		email: "climate@arenasportsacademyug.org",
+		phone: "+256 746 971 205",
+		icon: Leaf,
+	},
+	{
+		name: "Education Support",
+		email: "education@arenasportsacademyug.org",
+		phone: "+256 746 971 205",
+		icon: BookOpen,
+	},
+	{
+		name: "Cultural Heritage",
+		email: "culture@arenasportsacademyug.org",
+		phone: "+256 746 971 205",
+		icon: Building,
+	},
+	{
+		name: "Community Impact",
+		email: "community@arenasportsacademyug.org",
+		phone: "+256 746 971 205",
+		icon: Heart,
+	},
 ];
 
 export function Contact() {
+	const [searchParams] = useSearchParams();
 	const [formData, setFormData] = useState<ContactFormData>({
 		name: "",
 		email: "",
@@ -33,6 +59,14 @@ export function Contact() {
 		message: "",
 	});
 	const [isLoading, setIsLoading] = useState(false);
+
+	// Pre-fill subject from URL parameters
+	useEffect(() => {
+		const subject = searchParams.get('subject');
+		if (subject) {
+			setFormData(prev => ({ ...prev, subject: decodeURIComponent(subject) }));
+		}
+	}, [searchParams]);
 
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();

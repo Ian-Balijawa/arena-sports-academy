@@ -16,6 +16,10 @@ import {
 	MapPin,
 	Mail,
 	Phone,
+	Leaf,
+	BookOpen,
+	Building,
+	Heart,
 } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
@@ -295,12 +299,12 @@ const HomePage = () => {
 					>
 						<div>
 							<h2 className="text-3xl font-bold lg:text-4xl">
-								About Arena Sports Academy
+								About Arena Sports & Charity Foundation
 							</h2>
 							<p className="mt-4 text-lg text-muted-foreground">
-								Founded in 2014, Arena Sports Academy has grown from 20 members to
-								over 350 active participants. We are dedicated to developing
-								complete soccer players while instilling positive core values.
+								Founded in 2014, Arena Sports & Charity Foundation has grown from 20 members to
+								over 350 active participants. We harness the power of sports, education, culture, 
+								health, arts and environmental action to create lasting impact for communities and youth.
 							</p>
 							<div className="mt-8 grid gap-6 sm:grid-cols-2">
 								{features.map((feature, index) => (
@@ -353,6 +357,52 @@ const HomePage = () => {
 							</div>
 						</div>
 					</motion.div>
+				</div>
+			</section>
+
+			{/* Charity Focus Section */}
+			<section className="py-20 bg-gradient-to-r from-blue-50 to-purple-50">
+				<div className="container">
+					<motion.div
+						initial={{ opacity: 0, y: 20 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						viewport={{ once: true }}
+						transition={{ duration: 0.8 }}
+						className="text-center mb-12"
+					>
+						<h2 className="text-3xl font-bold mb-4">Our Charity Initiatives</h2>
+						<p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+							Building on our sports excellence, we're creating lasting community impact through focused charitable programs
+						</p>
+					</motion.div>
+
+					<div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+						{charityInitiatives.map((initiative, index) => (
+							<motion.div
+								key={initiative.title}
+								initial={{ opacity: 0, y: 20 }}
+								whileInView={{ opacity: 1, y: 0 }}
+								viewport={{ once: true }}
+								transition={{ duration: 0.6, delay: index * 0.1 }}
+							>
+								<Card className="h-full hover:shadow-lg transition-all group">
+									<CardContent className="p-6 text-center">
+										<div className="mb-4 text-blue-600 group-hover:scale-110 transition-transform">
+											{initiative.icon}
+										</div>
+										<h3 className="text-xl font-bold mb-3">{initiative.title}</h3>
+										<p className="text-muted-foreground mb-4">{initiative.description}</p>
+										<Link to={initiative.link}>
+											<Button variant="outline" size="sm" className="w-full">
+												Learn More
+												<ArrowRight className="ml-2 h-4 w-4" />
+											</Button>
+										</Link>
+									</CardContent>
+								</Card>
+							</motion.div>
+						))}
+					</div>
 				</div>
 			</section>
 
@@ -506,7 +556,7 @@ const HomePage = () => {
 					>
 						<h2 className="text-3xl font-bold lg:text-4xl">Get in Touch</h2>
 						<p className="mx-auto mt-4 max-w-2xl text-lg text-white/80">
-							Join us in developing the next generation of football talent
+							Join us in transforming communities through sports, education, and charitable initiatives
 						</p>
 					</motion.div>
 
@@ -614,23 +664,23 @@ const heroSlides = [
 	{
 		id: 1,
 		image: "/images/hero/1.jpg",
-		title: "Developing Complete Soccer Players Since 2014",
+		title: "Arena Sports & Charity Foundation",
 		subtitle:
-			"Join Arena Sports Academy and excel in Technical, Tactical, Physical, and Psychological aspects of the game while building strong character and values.",
+			"Harnessing the power of sports, education, culture, health, arts and environmental action to create lasting impact for communities and youth.",
 	},
 	{
 		id: 2,
 		image: "/images/hero/2.jpg",
-		title: "Professional Training Programs",
+		title: "Sports Excellence & Community Impact",
 		subtitle:
-			"Access world-class coaching and facilities designed to nurture talent and develop champions.",
+			"Building on our sports foundation to create comprehensive community development through education, climate action, and cultural preservation.",
 	},
 	{
 		id: 3,
 		image: "/images/hero/3.jpg",
-		title: "Building Future Champions",
+		title: "Transforming Lives Since 2014",
 		subtitle:
-			"Join our comprehensive youth development program focused on both athletic excellence and personal growth.",
+			"From sports academy to charity foundation - empowering youth, preserving culture, protecting environment, and educating communities.",
 	},
 ];
 
@@ -664,6 +714,33 @@ const partners = [
 		name: "FCV International Football Academy",
 		logo: "/images/partners/fcv.jpg",
 		description: "London, United Kingdom",
+	},
+];
+
+const charityInitiatives = [
+	{
+		title: "Climate Action",
+		description: "Promoting environmental awareness and sustainable community practices",
+		icon: <Leaf className="h-12 w-12 mx-auto text-green-600" />,
+		link: "/climate-action",
+	},
+	{
+		title: "Education",
+		description: "Supporting quality education and scholarship opportunities",
+		icon: <BookOpen className="h-12 w-12 mx-auto text-blue-600" />,
+		link: "/education",
+	},
+	{
+		title: "Cultural Heritage",
+		description: "Preserving traditions and promoting cultural identity",
+		icon: <Building className="h-12 w-12 mx-auto text-purple-600" />,
+		link: "/cultural-heritage",
+	},
+	{
+		title: "Our Impact",
+		description: "See how we're transforming communities",
+		icon: <Heart className="h-12 w-12 mx-auto text-red-600" />,
+		link: "/our-impact",
 	},
 ];
 

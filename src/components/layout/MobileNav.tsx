@@ -25,6 +25,13 @@ const navItems = [
 	{ href: "/faq", label: "FAQ" },
 ];
 
+const charityLinks = [
+	{ href: "/climate-action", label: "Climate Action" },
+	{ href: "/education", label: "Education" },
+	{ href: "/cultural-heritage", label: "Cultural Heritage" },
+	{ href: "/our-impact", label: "Our Impact" },
+];
+
 export function MobileNav() {
 	const [open, setOpen] = useState(false);
 	return (
@@ -61,7 +68,7 @@ export function MobileNav() {
 										<>
 											<img
 												src="/images/logo.png"
-												alt="Arena Sports Academy"
+												alt="Arena Sports & Charity Foundation"
 												className="h-8 w-auto"
 											/>
 											{item.label}
@@ -72,6 +79,30 @@ export function MobileNav() {
 								</Link>
 							</motion.div>
 						))}
+						
+						{/* Charity Section */}
+						<motion.div
+							initial={{ opacity: 0, x: -20 }}
+							animate={{ opacity: 1, x: 0 }}
+							exit={{ opacity: 0, x: -20 }}
+							transition={{ delay: navItems.length * 0.1 }}
+						>
+							<div className="px-2 py-2">
+								<h3 className="text-lg font-bold text-primary mb-2">Charity Initiatives</h3>
+								<div className="space-y-1">
+									{charityLinks.map((link) => (
+										<Link
+											key={link.href}
+											to={link.href}
+											className="block px-2 py-1 text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+											onClick={() => setOpen(false)}
+										>
+											{link.label}
+										</Link>
+									))}
+								</div>
+							</div>
+						</motion.div>
 						<Link
 							to="/donations"
 							className="flex items-center gap-2 text-sm font-medium"

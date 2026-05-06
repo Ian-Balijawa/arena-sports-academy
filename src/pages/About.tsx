@@ -1,9 +1,10 @@
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
-import { Target, Compass } from "lucide-react";
+import { Target, Compass, Leaf, BookOpen, Building, Heart } from "lucide-react";
 import { PDFVieweR } from "@/components/pdf-viewer";
 import { useQuery } from "@tanstack/react-query";
 import { api } from "@/services/api";
+import { Link } from "react-router-dom";
 
 export function About() {
 	const { data: coaches = [] } = useQuery({
@@ -24,6 +25,9 @@ export function About() {
 						className="max-w-3xl mx-auto text-center text-white"
 					>
 						<h1 className="text-5xl font-bold mb-6">About Us</h1>
+						<p className="text-xl mt-4 max-w-2xl mx-auto">
+							Arena Sports & Charity Foundation is a registered, non-profitable charity foundation established in July 2014. We harness the power of sports, education, culture, health, arts and environmental action to create lasting impact for communities and youth.
+						</p>
 					</motion.div>
 				</div>
 			</section>
@@ -143,6 +147,14 @@ export function About() {
 									the years, where membership has tripled from 100 in 2020 to over
 									350 members today and keeps on increasing.
 								</p>
+								<p className="text-lg text-muted-foreground leading-relaxed mt-4">
+									Building on our success in sports development, we have recently
+									transitioned to become Arena Sports & Charity Foundation, expanding
+									our mission to include comprehensive community development through
+									education, cultural preservation, environmental action, and
+									charitable initiatives. This evolution allows us to create even
+									greater impact in the communities we serve.
+								</p>
 							</CardContent>
 						</Card>
 					</motion.div>
@@ -228,6 +240,46 @@ export function About() {
 					</div>
 				</div>
 			</section>
+
+			{/* Charity Focus Areas Section */}
+			<section className="py-16 bg-primary-50">
+				<div className="container">
+					<motion.div
+						initial={{ opacity: 0, y: 20 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						viewport={{ once: true }}
+						transition={{ duration: 0.8 }}
+						className="text-center mb-12"
+					>
+						<h2 className="text-3xl font-bold">Our Charity Focus Areas</h2>
+						<p className="mt-4 text-lg text-muted-foreground">
+							We are committed to creating lasting impact through these key areas
+						</p>
+					</motion.div>
+
+					<div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+						{charityAreas.map((area, index) => (
+							<motion.div
+								key={area.title}
+								initial={{ opacity: 0, y: 20 }}
+								whileInView={{ opacity: 1, y: 0 }}
+								viewport={{ once: true }}
+								transition={{ duration: 0.6, delay: index * 0.1 }}
+							>
+								<Link to={area.link}>
+									<Card className="h-full hover:shadow-lg transition-all cursor-pointer group">
+										<CardContent className="p-6 text-center">
+											<div className="mb-4 group-hover:scale-110 transition-transform">{area.icon}</div>
+											<h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">{area.title}</h3>
+											<p className="text-muted-foreground">{area.description}</p>
+										</CardContent>
+									</Card>
+								</Link>
+							</motion.div>
+						))}
+					</div>
+				</div>
+			</section>
 		</div>
 	);
 }
@@ -266,6 +318,33 @@ const coreValues = [
 	{
 		title: "Leadership",
 		description: "Providing clear and exemplary management",
+	},
+];
+
+const charityAreas = [
+	{
+		title: "Climate Action",
+		description: "Promoting climate awareness, tree planting, waste management and sustainable community practices.",
+		icon: <Leaf className="h-12 w-12 text-green-600 mx-auto" />,
+		link: "/climate-action",
+	},
+	{
+		title: "Education",
+		description: "Supporting quality education, life skills, scholarship opportunities and digital learning for a brighter future.",
+		icon: <BookOpen className="h-12 w-12 text-blue-600 mx-auto" />,
+		link: "/education",
+	},
+	{
+		title: "Cultural Heritage",
+		description: "Preserving and promoting our traditions, languages, history and cultural identity for future generations.",
+		icon: <Building className="h-12 w-12 text-purple-600 mx-auto" />,
+		link: "/cultural-heritage",
+	},
+	{
+		title: "Community Impact",
+		description: "Empowering youth, transforming lives, and creating stronger, healthier communities.",
+		icon: <Heart className="h-12 w-12 text-red-600 mx-auto" />,
+		link: "/our-impact",
 	},
 ];
 
