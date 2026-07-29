@@ -135,14 +135,14 @@ export function Login() {
 									)}
 								</Button>
 
-								<div className="text-center">
+								{/* <div className="text-center">
 									<Link
 										to="/admin/signup"
 										className="text-sm text-white/60 hover:text-white transition-colors"
 									>
 										Don't have an account? Sign up
 									</Link>
-								</div>
+								</div> */}
 							</form>
 						</CardContent>
 					</Card>

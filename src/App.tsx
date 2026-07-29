@@ -24,7 +24,6 @@ import ProgramsPage from "@/pages/Programs";
 import { Facilities as FacilitiesPage } from "@/pages/Facilities";
 import { Coaches as CoachesPage } from "@/pages/Coaches";
 import { Toaster } from "sonner";
-import Signup from "@/pages/admin/Signup";
 import { NewsDetails } from "@/pages/NewsDetails";
 import { AlumniNetwork as AlumniPage } from "@/pages/Alumni";
 import { AlumniNetwork as AdminAlumniNetwork } from "@/pages/admin/AlumniNetwork";
@@ -78,10 +77,10 @@ const router = createBrowserRouter([
 		path: "admin/login",
 		element: <Login />,
 	},
-	{
-		path: "admin/signup",
-		element: <Signup />,
-	},
+	// {
+	// 	path: "admin/signup",
+	// 	element: <Signup />,
+	// },
 	{
 		path: "admin",
 		element: <AdminLayout />,
@@ -95,6 +94,10 @@ const router = createBrowserRouter([
 			{ path: "gallery", element: <AdminGallery /> },
 			{ path: "alumni", element: <AdminAlumniNetwork /> },
 		],
+	},
+	{
+		path: "*",
+		element: <HomePage />,
 	},
 ]);
 
