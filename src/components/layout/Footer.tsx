@@ -6,31 +6,38 @@ import { useState } from "react";
 import { api } from "@/services/api";
 import { toast } from "sonner";
 import { FaFacebook, FaInstagram, FaTiktok, FaYoutube, FaPaypal } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 
 const socialLinks = [
 	{
 		name: "Facebook",
-		url: "https://www.facebook.com/share/v/15TeKUVQyt/",
+		url: "https://www.facebook.com/p/Arena-sports-Academy-ug-61550936703045/",
 		icon: <FaFacebook className="h-5 w-5" />,
 		hoverClass: "hover:bg-[#1877F2]",
 	},
 	{
 		name: "Instagram",
-		url: "https://www.instagram.com/arenasportsacademyug/profilecard/?igsh=ZDZmcHZpdmkwcGJy",
+		url: "https://www.instagram.com/arenasportsacademyug/",
 		icon: <FaInstagram className="h-5 w-5" />,
 		hoverClass: "hover:bg-[#E4405F]",
 	},
 	{
 		name: "TikTok",
-		url: "https://vm.tiktok.com/ZS6DGyX25/",
+		url: "https://www.tiktok.com/@arenasportsacademyug",
 		icon: <FaTiktok className="h-5 w-5" />,
 		hoverClass: "hover:bg-[#000000]",
 	},
 	{
 		name: "YouTube",
-		url: "https://youtube.com/@arenasportsacademy5067?si=BIFHIuvyN1bJScMN",
+		url: "https://www.youtube.com/@arenasportsacademy5067",
 		icon: <FaYoutube className="h-5 w-5" />,
 		hoverClass: "hover:bg-[#FF0000]",
+	},
+	{
+		name: "X",
+		url: "https://x.com/AcademySpo12143",
+		icon: <FaXTwitter className="h-5 w-5" />, // or FaTwitter if you're using an older react-icons version
+		hoverClass: "hover:bg-[#000000]",
 	},
 	{
 		name: "PayPal",
